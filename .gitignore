@@ -1,0 +1,14 @@
+# Exclude system and editor files
+.DS_Store
+Thumbs.db
+*.log
+
+# Exclude large executable/java files and scripts
+pdfbox-app.jar
+convert_pdf.ps1
+null
+
+# Exclude reference templates and raw PDFs
+apresentação_PKASA_1.pdf
+paginas_pdf/
+REFERÊNCIA/

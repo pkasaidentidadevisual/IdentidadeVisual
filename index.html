@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O PKASA | Identidade Visual para Casamentos</title>
+    
+    <!-- Tab Icon (Branding Favicon) -->
+    <link rel="icon" type="image/png" href="ELEMENTOS%20SITE/ÍCONE.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Raleway:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        versailles: '#0a3263',
+                        atlantica: '#071f3d',
+                        champagne: '#f2eadd',
+                        gold: '#b89b68',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Raleway"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Raleway', sans-serif; 
+            background-color: #f2eadd; 
+            color: #071f3d; 
+            overflow-x: hidden; 
+        }
+        
+        /* Subtle Brand Pattern Watermark */
+        .bg-brand-pattern {
+            background-image: url('ELEMENTOS%20SITE/PATTERN%20PARA%20USAR%20EM%20FUNDOS.png');
+            background-repeat: repeat;
+            background-size: 320px;
+        }
+
+        .bg-grid-overlay {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none; background-size: 6rem 6rem;
+            background-image: linear-gradient(to right, rgba(10,50,99,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(10,50,99,0.02) 1px, transparent 1px);
+        }
+        
+        .bento-card {
+            background-color: rgba(255, 255, 255, 0.72); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(184, 155, 104, 0.2); 
+            border-radius: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .bento-card:hover {
+            border-color: rgba(184, 155, 104, 0.45); 
+            box-shadow: 0 1.25rem 3rem rgba(7, 31, 61, 0.07); 
+            transform: translateY(-4px);
+        }
+
+        /* Reveal animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #b89b68 0%, #d4b27a 50%, #9e8150 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f2eadd; }
+        ::-webkit-scrollbar-thumb { background: #b89b68; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a38555; }
+        
+        /* Portfolio luxury frame aesthetics - Fashion Magazine/Editorial style */
+        .luxury-frame {
+            position: relative;
+            padding: 10px;
+            border: 1px solid rgba(184, 155, 104, 0.22);
+            background-color: #ffffff;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .luxury-frame:hover {
+            border-color: rgba(184, 155, 104, 0.65);
+            box-shadow: 0 1.5rem 3.5rem rgba(7, 31, 61, 0.08);
+            transform: scale(1.015);
+        }
+        .luxury-inner-border {
+            position: relative;
+            border: 1px solid rgba(184, 155, 104, 0.12);
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        .portfolio-overlay {
+            background: linear-gradient(to top, rgba(7, 31, 61, 0.9) 0%, rgba(7, 31, 61, 0.1) 80%, transparent 100%);
+        }
+        
+        /* Interactive Tabs styling */
+        .tab-btn.active {
+            background-color: #071f3d;
+            color: #f2eadd;
+            border-color: #071f3d;
+        }
+
+        /* 1 dobra: Marquee seamless loop without empty space */
+        .marquee-container { display: flex; overflow: hidden; user-select: none; width: 100%; }
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            gap: 4rem;
+            min-width: 100%;
+            animation: scroll-marquee 25s linear infinite;
+        }
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Asymmetric Editorial Grid */
+        .editorial-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: #b89b68;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body class="selection:bg-gold/30 selection:text-atlantica relative">
+    <div class="bg-grid-overlay"></div>
+    <div class="absolute inset-0 bg-brand-pattern opacity-[0.03] pointer-events-none z-0"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center bg-champagne/80 backdrop-blur-md border-b border-atlantica/5">
+        <a href="#" class="flex items-center gap-3 z-10 transition-transform hover:scale-[1.02]">
+            <!-- 1 dobra: LOGO_HEAD_SITE maior para dar leitura premium -->
+            <img src="ELEMENTOS%20SITE/LOGO_HEAD_SITE.png" alt="O PKASA" class="h-14 md:h-16 w-auto">
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-atlantica/70 z-10">
+            <a href="#sobre" class="hover:text-gold transition-colors">Quem Somos</a>
+            <a href="#processo" class="hover:text-gold transition-colors">Nosso Processo</a>
+            <a href="#portfolio" class="hover:text-gold transition-colors">Galeria</a>
+            <a href="#investimento" class="hover:text-gold transition-colors">Investimento</a>
+        </div>
+        <a href="#contato" class="bg-atlantica text-champagne text-xs font-semibold px-6 py-3 rounded-full hover:bg-gold hover:text-atlantica transition-all duration-300 flex items-center gap-2 z-10 shadow-sm">
+            Fale Conosco <iconify-icon icon="solar:arrow-right-linear" stroke-width="1.5"></iconify-icon>
+        </a>
+    </nav>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="relative min-h-[92vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden">
+            <div class="max-w-[82.5rem] mx-auto w-full relative z-10">
+                <div class="flex flex-col items-start gap-6 reveal">
+                    <span class="font-sans text-xs font-bold text-gold uppercase tracking-[0.2em]">// IDENTIDADE VISUAL</span>
+                    <h1 class="text-[clamp(2.75rem,6.5vw,6rem)] leading-[1.05] font-serif font-light text-atlantica max-w-[20ch]">
+                        Traduzimos histórias de amor em <span class="italic font-normal text-gold">design atemporal.</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-atlantica/80 max-w-2xl font-light leading-relaxed mt-4 font-sans">
+                        Cuidamos de toda a identidade visual e papelaria fina do seu casamento. Criamos conceitos autorais e sensíveis que revelam a essência e a personalidade do casal em cada textura, cor e detalhe.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-6">
+                        <a href="#portfolio" class="bg-atlantica text-champagne text-sm font-medium px-8 py-4 rounded-full flex items-center gap-3 hover:bg-gold hover:text-atlantica transition-all duration-300 shadow-md hover:scale-105 transform">
+                            Conhecer Nosso Portfólio <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5"></iconify-icon>
+                        </a>
+                        <a href="#investimento" class="bg-transparent border border-atlantica/25 text-atlantica text-sm font-medium px-8 py-4 rounded-full hover:bg-atlantica/5 transition-colors">
+                            Ver Pacotes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1 dobra: Marquee sem espaço em branco no final (loops infinitos seamless) -->
+        <div class="w-full bg-atlantica text-gold py-4 relative z-20 overflow-hidden shadow-md">
+            <div class="marquee-container">
+                <div class="marquee-content font-mono text-xs tracking-[0.2em] uppercase">
+                    <span>Convites</span> • <span>Manuais dos Padrinhos</span> • <span>Menus</span> • <span>Save the Date</span> • <span>Lágrimas de Alegria</span> • <span>Placas de Mesa</span> •
+                    <span>Convites</span> • <span>Manuais dos Padrinhos</span> • <span>Menus</span> • <span>Save the Date</span> • <span>Lágrimas de Alegria</span> • <span>Placas de Mesa</span> •
+                    <span>Convites</span> • <span>Manuais dos Padrinhos</span> • <span>Menus</span> • <span>Save the Date</span> • <span>Lágrimas de Alegria</span> • <span>Placas de Mesa</span> •
+                    <span>Convites</span> • <span>Manuais dos Padrinhos</span> • <span>Menus</span> • <span>Save the Date</span> • <span>Lágrimas de Alegria</span> • <span>Placas de Mesa</span> •
+                </div>
+            </div>
+        </div>
+
+        <!-- Sobre Nós (Fundadores) - Marca referida como "o PKASA" no masculino -->
+        <section id="sobre" class="py-32 px-6 md:px-12 bg-white/40 border-b border-atlantica/5">
+            <div class="max-w-[82.5rem] mx-auto reveal">
+                <div class="text-center md:text-left mb-16">
+                    <span class="font-sans text-xs font-bold text-gold uppercase tracking-[0.2em]">01 / OS FUNDADORES</span>
+                    <h2 class="text-[clamp(2.5rem,4.5vw,4rem)] font-serif font-light text-atlantica mt-2">Alma, Design e Narrativa</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Photo Column -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="relative w-full max-w-[400px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl group border border-gold/20">
+                            <img src="ELEMENTOS%20SITE/NÓS.jpg" alt="Pedro e Katlen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-atlantica/60 via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white text-center">
+                                <p class="font-serif italic text-2xl text-champagne">Pedro & Katlen</p>
+                                <p class="text-xs uppercase tracking-widest text-white/80 font-sans mt-1">Nossa Linha do Tempo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Column: Fundadores - o PKASA -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                        <h3 class="text-3xl font-serif text-atlantica italic font-light">"Eternizando o amor através dos detalhes"</h3>
+                        <p class="text-atlantica/80 leading-relaxed font-sans font-light">
+                            Nossa jornada como casal e sócios é o coração do PKASA. Temos 6 anos de relacionamento repletos de cumplicidade. Vivenciamos cada etapa do planejamento do casamento na pele: noivamos em 10 de setembro de 2022 e dissemos o nosso "sim" definitivo em 15 de novembro de 2024. Foi ao desenhar a papelaria do nosso próprio grande dia que descobrimos a nossa missão: traduzir sentimentos em identidades visuais inesquecíveis.
+                        </p>
+                        
+                        <!-- Mini Timeline -->
+                        <div class="flex flex-wrap gap-4 py-2 border-y border-gold/15 my-2">
+                            <div class="flex-1 min-w-[120px]">
+                                <span class="block text-[10px] uppercase tracking-wider text-gold font-bold">15.04.2020</span>
+                                <span class="text-xs text-atlantica font-serif italic">Início do Namoro</span>
+                            </div>
+                            <div class="flex-1 min-w-[120px] border-l border-gold/15 pl-4">
+                                <span class="block text-[10px] uppercase tracking-wider text-gold font-bold">10.09.2022</span>
+                                <span class="text-xs text-atlantica font-serif italic">O Noivado</span>
+                            </div>
+                            <div class="flex-1 min-w-[120px] border-l border-gold/15 pl-4">
+                                <span class="block text-[10px] uppercase tracking-wider text-gold font-bold">15.11.2024</span>
+                                <span class="text-xs text-atlantica font-serif italic">O Casamento</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div class="bento-card p-6 bg-white/80">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <iconify-icon icon="solar:pen-bold-duotone" class="text-gold text-2xl"></iconify-icon>
+                                    <h4 class="font-serif font-bold text-atlantica text-lg">Pedro, 23 anos</h4>
+                                </div>
+                                <p class="text-sm text-atlantica/75 font-sans font-light">
+                                    Paulista, Diretor de Arte com mais de 5 anos de experiência. É a mente estratégica e visual do casal, responsável por conceber os conceitos estéticos e garantir a harmonia perfeita em cada layout e composição.
+                                </p>
+                            </div>
+                            <div class="bento-card p-6 bg-white/80">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <iconify-icon icon="solar:notebook-bold-duotone" class="text-gold text-2xl"></iconify-icon>
+                                    <h4 class="font-serif font-bold text-atlantica text-lg">Katlen, 23 anos</h4>
+                                </div>
+                                <p class="text-sm text-atlantica/75 font-sans font-light">
+                                    Paranaense e graduada em Biomedicina. Leitora apaixonada, devora romances e suspenses. Ela traz a sensibilidade narrativa para o design, cuidando de cada palavra para que a essência literária e poética de vocês seja contada com perfeição.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 dobra: Diferenciais com visual super premium, editorial clássico e minimalista (longe do estilo Canva) -->
+        <section class="py-28 px-6 md:px-12 bg-white relative border-b border-atlantica/5">
+            <div class="max-w-[82.5rem] mx-auto reveal">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-gold/15">
+                    
+                    <!-- Pilar I -->
+                    <div class="flex flex-col items-start pt-8 md:pt-0 md:px-6">
+                        <span class="font-serif italic text-4xl text-gold font-light mb-4 select-none">I</span>
+                        <span class="editorial-label">01 / AUTORALIDADE</span>
+                        <h4 class="text-xl font-serif font-bold text-atlantica mb-3">Arte Autoral</h4>
+                        <p class="text-sm text-atlantica/70 font-sans font-light leading-relaxed max-w-[260px]">
+                            Nenhum design é repetido. Criamos uma identidade do absoluto zero, desenhada unicamente para a história de vocês.
+                        </p>
+                    </div>
+
+                    <!-- Pilar II -->
+                    <div class="flex flex-col items-start pt-8 md:pt-0 md:px-8">
+                        <span class="font-serif italic text-4xl text-gold font-light mb-4 select-none">II</span>
+                        <span class="editorial-label">02 / CUMPLICIDADE</span>
+                        <h4 class="text-xl font-serif font-bold text-atlantica mb-3">Alinhamento Íntimo</h4>
+                        <p class="text-sm text-atlantica/70 font-sans font-light leading-relaxed max-w-[260px]">
+                            Nossas reuniões são momentos de escuta atenta, onde captamos os sonhos e os sentimentos por trás do evento.
+                        </p>
+                    </div>
+
+                    <!-- Pilar III -->
+                    <div class="flex flex-col items-start pt-8 md:pt-0 md:px-8">
+                        <span class="font-serif italic text-4xl text-gold font-light mb-4 select-none">III</span>
+                        <span class="editorial-label">03 / LITERATURA</span>
+                        <h4 class="text-xl font-serif font-bold text-atlantica mb-3">Sensibilidade Poética</h4>
+                        <p class="text-sm text-atlantica/70 font-sans font-light leading-relaxed max-w-[260px]">
+                            Tradução de sentimentos e redação poética refinada que despertam emoção imediata em quem recebe os convites.
+                        </p>
+                    </div>
+
+                    <!-- Pilar IV -->
+                    <div class="flex flex-col items-start pt-8 md:pt-0 md:px-8">
+                        <span class="font-serif italic text-4xl text-gold font-light mb-4 select-none">IV</span>
+                        <span class="editorial-label">04 / CURADORIA</span>
+                        <h4 class="text-xl font-serif font-bold text-atlantica mb-3">Acabamento Premium</h4>
+                        <p class="text-sm text-atlantica/70 font-sans font-light leading-relaxed max-w-[260px]">
+                            Fontes clássicas, selos virtuais de cera, paletas harmoniosas e monogramas majestosos de alta costura.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Processos -->
+        <section id="processo" class="py-32 px-6 md:px-12 bg-white/30 border-b border-atlantica/5">
+            <div class="max-w-[82.5rem] mx-auto reveal">
+                <span class="font-sans text-xs font-bold text-gold uppercase tracking-[0.2em] block mb-2">02 / O CAMINHO</span>
+                <h2 class="text-[clamp(2.5rem,4.5vw,4rem)] font-serif font-light text-atlantica mb-16">Nosso Processo</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div class="bento-card p-6 bg-white/80 relative overflow-hidden group border border-gold/15">
+                        <span class="font-serif text-5xl text-gold/10 font-bold absolute -right-2 -bottom-4 group-hover:text-gold/25 transition-colors select-none">1</span>
+                        <h4 class="text-lg font-serif font-bold text-atlantica mb-2 relative z-10">Pacote</h4>
+                        <p class="text-xs text-atlantica/75 font-sans leading-relaxed relative z-10">Você escolhe o melhor pacote de peças para você e seu evento.</p>
+                    </div>
+                    <div class="bento-card p-6 bg-white/80 relative overflow-hidden group border border-gold/15">
+                        <span class="font-serif text-5xl text-gold/10 font-bold absolute -right-2 -bottom-4 group-hover:text-gold/25 transition-colors select-none">2</span>
+                        <h4 class="text-lg font-serif font-bold text-atlantica mb-2 relative z-10">Contrato</h4>
+                        <p class="text-xs text-atlantica/75 font-sans leading-relaxed relative z-10">Entrada de 40% e envio do contrato para assinatura digital.</p>
+                    </div>
+                    <div class="bento-card p-6 bg-white/80 relative overflow-hidden group border border-gold/15">
+                        <span class="font-serif text-5xl text-gold/10 font-bold absolute -right-2 -bottom-4 group-hover:text-gold/25 transition-colors select-none">3</span>
+                        <h4 class="text-lg font-serif font-bold text-atlantica mb-2 relative z-10">Briefing</h4>
+                        <p class="text-xs text-atlantica/75 font-sans leading-relaxed relative z-10">Envio do formulário detalhado para coletar referências e cores.</p>
+                    </div>
+                    <div class="bento-card p-6 bg-white/80 relative overflow-hidden group border border-gold/15">
+                        <span class="font-serif text-5xl text-gold/10 font-bold absolute -right-2 -bottom-4 group-hover:text-gold/25 transition-colors select-none">4</span>
+                        <h4 class="text-lg font-serif font-bold text-atlantica mb-2 relative z-10">Alinhamento</h4>
+                        <p class="text-xs text-atlantica/75 font-sans leading-relaxed relative z-10">Reunião para alinhar todos os detalhes visuais e criativos.</p>
+                    </div>
+                    <div class="bento-card p-6 bg-white/80 relative overflow-hidden group border border-gold/15">
+                        <span class="font-serif text-5xl text-gold/10 font-bold absolute -right-2 -bottom-4 group-hover:text-gold/25 transition-colors select-none">5</span>
+                        <h4 class="text-lg font-serif font-bold text-atlantica mb-2 relative z-10">Aprovação</h4>
+                        <p class="text-xs text-atlantica/75 font-sans leading-relaxed relative z-10">Apresentação da arte e envio dos arquivos finais para impressão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 dobra: Portfólio com disposição sofisticada estilo Editorial de Revista/Moda (Asymmetric high-fashion collage grid) -->
+        <section id="portfolio" class="py-32 px-6 md:px-12 bg-white">
+            <div class="max-w-[82.5rem] mx-auto reveal">
+                <div class="text-center mb-16">
+                    <span class="font-sans text-xs font-bold text-gold uppercase tracking-[0.2em]">03 / PORTFÓLIO E PROJETOS</span>
+                    <h2 class="text-[clamp(2.5rem,4.5vw,4rem)] font-serif font-light text-atlantica mt-2">Nossas Criações</h2>
+                    <p class="text-atlantica/60 max-w-xl mx-auto mt-4 font-sans font-light text-sm">
+                        Curadoria de identidades visuais dispostas como editoriais de alta costura, exaltando a beleza e a pureza de cada peça.
+                    </p>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="flex flex-wrap justify-center gap-4 mb-16">
+                    <button class="tab-btn px-6 py-2.5 rounded-full border border-atlantica/20 text-sm font-semibold transition-all duration-300 active" onclick="switchTab('pedro-katlen', this)">
+                        Pedro & Katlen
+                    </button>
+                    <button class="tab-btn px-6 py-2.5 rounded-full border border-atlantica/20 text-sm font-semibold transition-all duration-300" onclick="switchTab('noemi-joao', this)">
+                        Noemi & João
+                    </button>
+                    <button class="tab-btn px-6 py-2.5 rounded-full border border-atlantica/20 text-sm font-semibold transition-all duration-300" onclick="switchTab('bianca-alysson', this)">
+                        Bianca & Alysson
+                    </button>
+                </div>
+
+                <!-- Tab Content Containers -->
+                <div class="relative w-full">
+                    
+                    <!-- TAB 1: PEDRO & KATLEN (Masonry Editorial Grid without crops and captions) -->
+                    <div id="tab-pedro-katlen" class="tab-content columns-1 sm:columns-2 lg:columns-3 gap-6">
+                        
+                        <!-- Item 1: Convite Geral -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/CONVITE GERAL.png', 'Convite Geral - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/CONVITE GERAL.png" alt="Convite Geral" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Manual dos Padrinhos -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/MANUAL DOS PADRINHOS.png', 'Manual dos Padrinhos - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/MANUAL DOS PADRINHOS.png" alt="Manual dos Padrinhos" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Caderno de Votos -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/CADERNO DE VOTOS.jpg', 'Caderno de Votos - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/CADERNO DE VOTOS.jpg" alt="Caderno de Votos" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Lágrimas de Alegria -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/LÁGRIMAS DE ALEGRIA.png', 'Lágrimas de Alegria - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/LÁGRIMAS DE ALEGRIA.png" alt="Lágrimas de Alegria" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: Placa de Mesa -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/PLACA DE MESA.png', 'Placa de Mesa - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/PLACA DE MESA.png" alt="Placa de Mesa" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6: Convite Digital -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/CONVITE.png', 'Convite Digital - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/CONVITE.png" alt="Convite Digital" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7: Papelaria Geral -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/PEDRO E KATLEN/PAPELARIA EM GERAL.png', 'Papelaria em Geral - Pedro & Katlen')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/PEDRO E KATLEN/PAPELARIA EM GERAL.png" alt="Papelaria em Geral" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: NOEMI & JOÃO (Grouped & Editorial Masonry) -->
+                    <div id="tab-noemi-joao" class="tab-content hidden columns-1 sm:columns-2 lg:columns-3 gap-6">
+                        
+                        <!-- 1. Save the Date -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/NOEMI E JOÃO/SAVE THE DATE.png', 'Save the Date - Noemi & João')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/NOEMI E JOÃO/SAVE THE DATE.png" alt="Save the Date" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Convite Geral -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/NOEMI E JOÃO/CONVITE GERAL.png', 'Convite Geral - Noemi & João')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/NOEMI E JOÃO/CONVITE GERAL.png" alt="Convite Geral" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Menu -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/NOEMI E JOÃO/MENU.png', 'Menu - Noemi & João')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/NOEMI E JOÃO/MENU.png" alt="Menu de Mesa" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Lembrancinha -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/NOEMI E JOÃO/LEMBRANCINHA_Joao_e_Noemi.png', 'Lembrancinha - Noemi & João')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/NOEMI E JOÃO/LEMBRANCINHA_Joao_e_Noemi.png" alt="Lembrancinhas" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Manual dos Padrinhos Unificado -->
+                        <div class="luxury-frame group cursor-pointer break-inside-avoid block w-full mb-6" onclick="openLightbox('PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_01.png', 'Manual dos Padrinhos - Capa', ['PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_01.png', 'PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_02.png', 'PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_03.png', 'PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_04.png', 'PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_05.png', 'PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_06.png'])">
+                            <div class="luxury-inner-border relative">
+                                <img src="PORTFÓLIO/NOEMI E JOÃO/MANUAL DOS PADRINHOS_01.png" alt="Manual dos Padrinhos Capa" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute top-4 right-4 bg-gold text-atlantica text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">6 Páginas</div>
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: BIANCA & ALYSSON -->
+                    <div id="tab-bianca-alysson" class="tab-content hidden flex justify-center w-full">
+                        <div class="max-w-md w-full luxury-frame group cursor-pointer" onclick="openLightbox('PORTFÓLIO/BIANCA E ALYSSON/CONVITE GERAL E CONVITE DA FESTA.png', 'Convite Geral e Convite da Festa - Bianca & Alysson')">
+                            <div class="luxury-inner-border">
+                                <img src="PORTFÓLIO/BIANCA E ALYSSON/CONVITE GERAL E CONVITE DA FESTA.png" alt="Convite Bianca e Alysson" class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]">
+                                <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-white text-4xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6 dobra: Investimento com carrossel responsivo (em Computadores mostra os 3 planos lado a lado. Em celulares vira carrossel. Balão de recomendado sem cortes) -->
+        <section id="investimento" class="py-32 px-6 md:px-12 bg-white/40 border-t border-b border-atlantica/5 relative">
+            <div class="max-w-[82.5rem] mx-auto reveal">
+                <div class="text-center mb-16">
+                    <span class="font-sans text-xs font-bold text-gold uppercase tracking-[0.2em]">04 / INVESTIMENTO E PACOTES</span>
+                    <h2 class="text-[clamp(2.5rem,4.5vw,4rem)] font-serif font-light text-atlantica mt-2">Investimento</h2>
+                    <p class="text-atlantica/70 max-w-xl mx-auto mt-4 font-sans font-light text-sm">
+                        Criamos pacotes refinados que atendem perfeitamente à escala do seu evento.
+                    </p>
+                </div>
+                
+                <!-- Desktop Display (Lado a lado, mostrando os outros planos e com padding-top para não cortar o recomendado) -->
+                <div class="hidden md:grid grid-cols-3 gap-8 items-stretch pt-8 pb-16">
+                    
+                    <!-- Card 1: Essencial -->
+                    <div class="bento-card p-8 flex flex-col bg-white">
+                        <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-widest block mb-2">Essencial</span>
+                        <h3 class="text-2xl font-serif font-light mb-1 text-atlantica">Identidade Essencial</h3>
+                        <p class="text-2xl font-sans font-bold text-atlantica mb-6">R$ 490,00</p>
+                        <ul class="space-y-4 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Save the Date</b> Digital</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Convite Digital Geral</b> (Revisão Ilimitada de Texto)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Manual dos Padrinhos</b> (Até 6 Páginas)</span>
+                            </li>
+                        </ul>
+                        <button onclick="selectPackage('Identidade Essencial', 490)" class="w-full py-3 rounded-full bg-atlantica/5 text-atlantica border border-atlantica/10 hover:bg-atlantica hover:text-champagne transition-all duration-300 text-sm font-semibold mt-auto">
+                            Selecionar Pacote
+                        </button>
+                    </div>
+
+                    <!-- Card 2: Clássico (Recomendado - Com espaçamento pt-8 para o balão flutuar sem corte) -->
+                    <div class="bento-card p-8 flex flex-col bg-white border-gold shadow-2xl relative transform -translate-y-4">
+                        <div class="absolute -top-3 right-8 bg-gold text-atlantica text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest z-10 shadow">Recomendado</div>
+                        <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-widest block mb-2">Clássico</span>
+                        <h3 class="text-2xl font-serif font-light mb-1 text-atlantica">Identidade Clássica</h3>
+                        <p class="text-2xl font-sans font-bold text-atlantica mb-6">R$ 790,00</p>
+                        <ul class="space-y-4 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Save the Date</b> Digital</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Convite Digital Geral</b></span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Manual dos Padrinhos</b> (Até 8 Páginas)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Manual dos Pais</b> (Prancheta Exclusiva)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Caderno de Votos</b> (Layout Capa e Contracapa)</span>
+                            </li>
+                        </ul>
+                        <button onclick="selectPackage('Identidade Clássica', 790)" class="w-full py-3.5 rounded-full bg-atlantica text-champagne hover:bg-gold hover:text-atlantica transition-all duration-300 text-sm font-semibold mt-auto shadow-md">
+                            Selecionar Pacote
+                        </button>
+                    </div>
+
+                    <!-- Card 3: Premium -->
+                    <div class="bento-card p-8 flex flex-col bg-white">
+                        <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-widest block mb-2">Exclusivo</span>
+                        <h3 class="text-2xl font-serif font-light mb-1 text-atlantica">Identidade Premium</h3>
+                        <p class="text-2xl font-sans font-bold text-atlantica mb-6">R$ 1.490,00</p>
+                        <ul class="space-y-4 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Tudo do Pacote Clássico</b></span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Menu de Mesa</b></span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Lágrimas de Alegria</b> (Design Embalagem)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Placas de Mesa / Reserva</b> (Até 4 Layouts)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-atlantica/80 font-sans">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-lg"></iconify-icon> 
+                                <span><b>Tags Gerais / Lembrancinhas</b></span>
+                            </li>
+                        </ul>
+                        <button onclick="selectPackage('Identidade Premium', 1490)" class="w-full py-3 rounded-full bg-atlantica/5 text-atlantica border border-atlantica/10 hover:bg-atlantica hover:text-champagne transition-all duration-300 text-sm font-semibold mt-auto">
+                            Selecionar Pacote
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Mobile Display (Carrossel com peek nos outros planos) -->
+                <div class="block md:hidden relative w-full overflow-hidden px-2 pt-12 pb-8">
+                    <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                        
+                        <!-- Slide 1: Essencial -->
+                        <div class="w-[85vw] flex-shrink-0 px-2">
+                            <div class="bento-card p-6 flex flex-col bg-white border border-gold/15 min-h-[460px]">
+                                <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-widest block mb-2">Essencial</span>
+                                <h3 class="text-2xl font-serif font-light mb-1 text-atlantica">Identidade Essencial</h3>
+                                <p class="text-xl font-sans font-bold text-atlantica mb-6">R$ 490,00</p>
+                                <ul class="space-y-3 mb-6 flex-grow text-xs">
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Save the Date</b> Digital</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Convite Geral</b> Digital</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Manual dos Padrinhos</b> (6 Págs)</span>
+                                    </li>
+                                </ul>
+                                <button onclick="selectPackage('Identidade Essencial', 490)" class="w-full py-3 rounded-full bg-atlantica text-champagne text-xs font-semibold shadow-md">
+                                    Selecionar Pacote
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Clássico (Recommended / Default Start - Com padding extra) -->
+                        <div class="w-[85vw] flex-shrink-0 px-2 pt-2">
+                            <div class="bento-card p-6 flex flex-col bg-white border-gold shadow-xl relative min-h-[460px]">
+                                <div class="absolute -top-3 right-6 bg-gold text-atlantica text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10 shadow">Recomendado</div>
+                                <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-widest block mb-2">Clássico</span>
+                                <h3 class="text-2xl font-serif font-light mb-1 text-atlantica">Identidade Clássica</h3>
+                                <p class="text-xl font-sans font-bold text-atlantica mb-6">R$ 790,00</p>
+                                <ul class="space-y-3 mb-6 flex-grow text-xs">
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Save the Date</b> Digital</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Convite Geral</b> Digital</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Manual dos Padrinhos</b> (8 Págs)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Manual dos Pais</b></span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Caderno de Votos</b></span>
+                                    </li>
+                                </ul>
+                                <button onclick="selectPackage('Identidade Clássica', 790)" class="w-full py-3 rounded-full bg-atlantica text-champagne text-xs font-semibold shadow-md">
+                                    Selecionar Pacote
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Premium -->
+                        <div class="w-[85vw] flex-shrink-0 px-2">
+                            <div class="bento-card p-6 flex flex-col bg-white border border-gold/15 min-h-[460px]">
+                                <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-widest block mb-2">Exclusivo</span>
+                                <h3 class="text-2xl font-serif font-light mb-1 text-atlantica">Identidade Premium</h3>
+                                <p class="text-xl font-sans font-bold text-atlantica mb-6">R$ 1.490,00</p>
+                                <ul class="space-y-3 mb-6 flex-grow text-xs">
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Tudo do Pacote Clássico</b></span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Menu de Mesa</b></span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Lágrimas de Alegria</b></span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-atlantica/80 font-sans">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-gold mt-0.5 text-base"></iconify-icon> 
+                                        <span><b>Placas de Mesa</b></span>
+                                    </li>
+                                </ul>
+                                <button onclick="selectPackage('Identidade Premium', 1490)" class="w-full py-3 rounded-full bg-atlantica text-champagne text-xs font-semibold shadow-md">
+                                    Selecionar Pacote
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Carousel Controls on Mobile -->
+                    <div class="flex justify-center gap-6 mt-6">
+                        <button onclick="prevSlide()" class="w-10 h-10 rounded-full border border-atlantica/20 flex items-center justify-center text-atlantica hover:bg-gold hover:text-atlantica transition-all duration-300">
+                            <iconify-icon icon="solar:arrow-left-linear" class="text-lg"></iconify-icon>
+                        </button>
+                        <button onclick="nextSlide()" class="w-10 h-10 rounded-full border border-atlantica/20 flex items-center justify-center text-atlantica hover:bg-gold hover:text-atlantica transition-all duration-300">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom / Personalização -->
+                <div class="bento-card p-8 bg-white/70 flex flex-col lg:flex-row justify-between items-center gap-8 border border-gold/15 mt-8">
+                    <div>
+                        <h4 class="text-xl font-serif text-atlantica italic font-bold mb-2">Precisa de peças específicas? Personalize!</h4>
+                        <p class="text-sm text-atlantica/80 font-sans font-light leading-relaxed">
+                            Adicione peças avulsas ou monte uma papelaria completamente sob medida para as suas necessidades de impressão.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                            <div class="bg-champagne/45 p-3 rounded-xl text-center border border-gold/10">
+                                <p class="text-xs text-atlantica font-bold">Apenas Convite</p>
+                                <p class="text-sm font-bold text-gold">R$ 290,00</p>
+                            </div>
+                            <div class="bg-champagne/45 p-3 rounded-xl text-center border border-gold/10">
+                                <p class="text-xs text-atlantica font-bold">Convite + Save</p>
+                                <p class="text-sm font-bold text-gold">R$ 380,00</p>
+                            </div>
+                            <div class="bg-champagne/45 p-3 rounded-xl text-center border border-gold/10">
+                                <p class="text-xs text-atlantica font-bold">Manual de Padrinhos</p>
+                                <p class="text-sm font-bold text-gold">R$ 290,00</p>
+                            </div>
+                            <div class="bg-champagne/45 p-3 rounded-xl text-center border border-gold/10">
+                                <p class="text-xs text-atlantica font-bold">Peça Avulsa Extra</p>
+                                <p class="text-sm font-bold text-gold">R$ 90,00</p>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-atlantica/50 mt-4 italic font-sans">* Produzimos e entregamos exclusivamente as artes em arquivos digitais prontos para impressão. A produção gráfica física é por conta do cliente.</p>
+                    </div>
+                    <a href="https://wa.me/5511977099721?text=Ol%C3%A1!%20Gostaria%20de%20montar%20um%20pacote%20de%20papelaria%20personalizado%20com%20voc%C3%AAs%20no%20PKASA." target="_blank" class="bg-atlantica text-champagne px-8 py-4 rounded-full text-sm font-semibold hover:bg-gold hover:text-atlantica transition-all duration-300 flex-shrink-0 shadow-md">
+                        Montar Pacote Customizado
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informações e Regras -->
+        <section class="py-24 px-6 md:px-12 bg-white">
+            <div class="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 reveal">
+                <div>
+                    <h3 class="text-3xl font-serif italic text-atlantica mb-6 font-light">Detalhes & Diretrizes</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="font-serif text-2xl text-gold font-bold">01.</span>
+                            <div>
+                                <h4 class="font-serif font-bold text-atlantica text-lg">Direitos de Alteração</h4>
+                                <p class="text-sm text-atlantica/75 font-sans font-light mt-1">Após a aprovação inicial e entrega, você possui direito a 2 rodadas de alterações gerais gratuitas. Ajustes adicionais são cobrados à taxa de R$ 5,00 por alteração. Eventuais erros ortográficos de nossa responsabilidade não são cobrados.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="font-serif text-2xl text-gold font-bold">02.</span>
+                            <div>
+                                <h4 class="font-serif font-bold text-atlantica text-lg">Formatos de Entrega</h4>
+                                <p class="text-sm text-atlantica/75 font-sans font-light mt-1">Os arquivos prontos e os PDFs finais configurados com sangria técnica para a gráfica são disponibilizados em alta definição através do Google Drive e organizados em pastas.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="font-serif text-2xl text-gold font-bold">03.</span>
+                            <div>
+                                <h4 class="font-serif font-bold text-atlantica text-lg">Prazo e Atendimento</h4>
+                                <p class="text-sm text-atlantica/75 font-sans font-light mt-1">O prazo de desenvolvimento é alinhado durante o briefing inicial, respeitando a antecedência recomendada de 6 a 8 meses antes da data do casamento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bento-card p-8 bg-champagne/20 flex flex-col justify-between border border-gold/25">
+                    <div>
+                        <h3 class="text-2xl font-serif text-atlantica mb-6 italic">Formas de Pagamento</h3>
+                        <ul class="space-y-4 mb-6">
+                            <li class="flex items-center justify-between border-b border-gold/10 pb-2">
+                                <span class="font-medium text-atlantica font-sans">Cartão de Crédito</span>
+                                <span class="text-xs text-atlantica/60">Parcelamento em até 12x</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-gold/10 pb-2">
+                                <span class="font-medium text-atlantica font-sans">Boleto / Pix 40% + 60%</span>
+                                <span class="text-xs text-atlantica/60">Entrada + Entrega</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-gold/10 pb-2">
+                                <span class="font-bold text-versailles font-sans">PIX (À Vista Completo)</span>
+                                <span class="text-xs font-bold text-gold bg-gold/10 px-2.5 py-0.5 rounded">10% OFF</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl border border-gold/15">
+                        <div class="flex items-center justify-between mb-1">
+                            <p class="text-[10px] text-atlantica/65 font-bold uppercase tracking-wider">Chave PIX Oficial (E-mail)</p>
+                            <iconify-icon icon="solar:copy-bold-duotone" class="text-gold text-lg cursor-pointer transition-transform active:scale-95" onclick="copyPix()"></iconify-icon>
+                        </div>
+                        <p id="pix-key" class="font-mono text-sm font-semibold text-atlantica">pkfaustonascimento@gmail.com</p>
+                        <p class="text-[9px] text-atlantica/50 mt-1 italic">* Realize a transferência de forma direta e nos envie o comprovante de pagamento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Footer / WhatsApp (Pre-filled templates) -->
+        <section id="contato" class="relative py-40 px-6 md:px-12 overflow-hidden flex flex-col items-center text-center bg-atlantica text-champagne">
+            <!-- 7 dobra: Novo Pattern com 100% de opacidade no fundo para dar um chan -->
+            <div class="absolute inset-0 bg-brand-pattern pointer-events-none z-0" style="opacity: 1;"></div>
+            
+            <div class="relative z-10 max-w-2xl reveal flex flex-col items-center w-full">
+                <!-- 7 dobra: Atualizado ícone para ÍCONE_DOBRA_FINAL para ficar maior -->
+                <img src="ELEMENTOS%20SITE/ÍCONE_DOBRA_FINAL.png" alt="Ícone PKASA Final" class="h-24 md:h-28 w-auto mb-8 opacity-95">
+                
+                <!-- 7 dobra: Prontos para eternizar o seu grande dia? em 2 linhas, terminando a primeira linha no "o" -->
+                <h2 class="text-[clamp(1.8rem,5.5vw,4.5rem)] font-serif font-light leading-[1.1] mb-6 max-w-3xl mx-auto">
+                    <span class="block whitespace-nowrap">Prontos para eternizar o</span>
+                    <span class="block whitespace-nowrap">seu grande dia?</span>
+                </h2>
+                <p class="text-base text-champagne/70 mb-10 font-light max-w-lg font-sans">
+                    Fale conosco diretamente via WhatsApp. Nós adoraremos conhecer a sua história de amor e criar uma papelaria fascinante para o seu casamento.
+                </p>
+                
+                <!-- Double CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-lg">
+                    <a id="whatsapp-pedro" href="https://wa.me/5511977099721?text=Ol%C3%A1%20Pedro!%20Visitei%20o%20site%20do%20PKASA%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20identidade%20visual." target="_blank" class="w-full sm:w-auto bg-gold text-atlantica text-sm font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-white hover:text-atlantica transition-all duration-300 shadow-lg transform hover:scale-105">
+                        <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Falar com Pedro
+                    </a>
+                    <a id="whatsapp-katlen" href="https://wa.me/5512982388010?text=Ol%C3%A1%20Katlen!%20Visitei%20o%20site%20do%20PKASA%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20identidade%20visual." target="_blank" class="w-full sm:w-auto bg-transparent border border-champagne/40 text-champagne text-sm font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-white hover:text-atlantica transition-all duration-300 shadow-lg transform hover:scale-105">
+                        <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Falar com Katlen
+                    </a>
+                </div>
+                
+                <div class="mt-20 pt-8 border-t border-champagne/10 flex flex-col md:flex-row justify-center items-center gap-8 text-champagne/50 text-xs tracking-wider">
+                    <a href="mailto:pkasaidentidadevisual@gmail.com" class="hover:text-gold transition-colors flex items-center gap-2">
+                        <iconify-icon icon="solar:letter-linear" width="16"></iconify-icon> pkasaidentidadevisual@gmail.com
+                    </a>
+                    <a href="https://instagram.com/_pkasa" target="_blank" class="hover:text-gold transition-colors flex items-center gap-2">
+                        <iconify-icon icon="mdi:instagram" width="16"></iconify-icon> @_pkasa
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-atlantica py-6 text-center text-champagne/30 text-[10px] font-sans uppercase tracking-[0.2em] border-t border-champagne/5 relative z-10">
+        © 2026  PKASA Identidade Visual. Todos os direitos reservados.
+    </footer>
+
+
+    <!-- PAYMENT MODAL OVERLAY -->
+    <div id="payment-modal" class="fixed inset-0 z-50 hidden bg-atlantica/80 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+        <div class="bento-card bg-white max-w-3xl w-full p-8 md:p-10 relative transform scale-95 transition-all duration-300 max-h-[90vh] overflow-y-auto">
+            <!-- Close button -->
+            <button class="absolute top-4 right-4 text-atlantica/50 hover:text-gold transition-colors p-2 text-2xl" onclick="closePaymentModal()">
+                <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
+            </button>
+            
+            <div class="text-center mb-8">
+                <span class="font-sans text-[10px] font-bold text-gold uppercase tracking-[0.2em]">// PAGAMENTO SEGURO</span>
+                <h3 class="text-3xl font-serif text-atlantica mt-2">Escolha como pagar</h3>
+                <p id="modal-package-name" class="text-atlantica/60 font-sans text-sm mt-1 font-semibold"></p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-gold/20">
+                <!-- Coluna 1: PIX -->
+                <div class="flex flex-col items-center text-center pb-6 md:pb-0 md:pr-6 justify-between">
+                    <div>
+                        <div class="flex items-center justify-center gap-2 mb-2">
+                            <iconify-icon icon="solar:qr-code-bold-duotone" class="text-gold text-2xl"></iconify-icon>
+                            <h4 class="font-serif font-bold text-atlantica text-xl">PIX à Vista</h4>
+                        </div>
+                        <span class="inline-block bg-gold/10 text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">10% de Desconto</span>
+                        <div class="mb-6">
+                            <p class="text-xs text-atlantica/50 uppercase tracking-widest font-sans">Valor com desconto</p>
+                            <p id="modal-pix-price" class="text-3xl font-sans font-bold text-atlantica mt-1"></p>
+                            <p id="modal-original-price" class="text-xs text-atlantica/40 line-through mt-0.5"></p>
+                        </div>
+                        
+                        <div class="bg-champagne/45 p-4 rounded-xl border border-gold/15 w-full max-w-[280px] mx-auto text-left relative group">
+                            <p class="text-[9px] text-atlantica/65 font-bold uppercase tracking-wider mb-1">Chave PIX (E-mail)</p>
+                            <p class="font-mono text-xs font-semibold text-atlantica select-all">pkfaustonascimento@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col gap-3 w-full max-w-[280px] mt-6">
+                        <button id="btn-copy-pix-modal" onclick="copyPixModal()" class="w-full py-3.5 rounded-full bg-gold text-atlantica text-xs font-bold hover:bg-atlantica hover:text-champagne transition-all duration-300 flex items-center justify-center gap-2 shadow shadow-gold/20">
+                            <iconify-icon icon="solar:copy-bold-duotone" class="text-base"></iconify-icon> Copiar Chave PIX
+                        </button>
+                        <a id="btn-whatsapp-pix" href="#" target="_blank" class="w-full py-3 rounded-full border border-atlantica/25 text-atlantica hover:bg-atlantica hover:text-champagne text-xs font-semibold transition-all duration-300 flex items-center justify-center gap-2">
+                            <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon> Enviar Comprovante
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Coluna 2: Cartao de Credito -->
+                <div class="flex flex-col items-center text-center pt-6 md:pt-0 md:pl-8 justify-between">
+                    <div>
+                        <div class="flex items-center justify-center gap-2 mb-2">
+                            <iconify-icon icon="solar:card-2-bold-duotone" class="text-gold text-2xl"></iconify-icon>
+                            <h4 class="font-serif font-bold text-atlantica text-xl">Cartão de Crédito</h4>
+                        </div>
+                        <span class="inline-block bg-atlantica/5 text-atlantica/70 text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Sem juros no link</span>
+                        <div class="mb-6">
+                            <p class="text-xs text-atlantica/50 uppercase tracking-widest font-sans">Valor total parcelado</p>
+                            <p id="modal-card-price" class="text-3xl font-sans font-bold text-atlantica mt-1"></p>
+                            <p class="text-xs text-atlantica/60 mt-1 font-sans">Parcelamento em até 12x via Mercado Pago</p>
+                        </div>
+                        
+                        <p class="text-xs text-atlantica/65 max-w-[260px] leading-relaxed mx-auto font-sans font-light">
+                            Pague com total segurança e praticidade. Aceitamos todas as principais bandeiras através da plataforma de pagamento seguro.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col gap-3 w-full max-w-[280px] mt-6">
+                        <a id="btn-pay-card-modal" href="#" target="_blank" class="w-full py-3.5 rounded-full bg-atlantica text-champagne text-xs font-bold hover:bg-gold hover:text-atlantica transition-all duration-300 flex items-center justify-center gap-2 shadow shadow-atlantica/20">
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="text-base"></iconify-icon> Pagar com Cartão
+                        </a>
+                        <p class="text-[9px] text-atlantica/40 italic mt-1 font-sans">* O link abrirá uma janela externa oficial do Mercado Pago para sua segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX / MODAL OVERLAY (With navigation arrows for grouped gallery) -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-atlantica/95 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
+        <!-- Close button -->
+        <button class="absolute top-6 right-6 text-champagne/80 hover:text-gold transition-colors p-2 text-3xl z-55" onclick="closeLightbox()">
+            <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
+        </button>
+        
+        <!-- Lightbox Gallery Navigation Arrows -->
+        <div id="lightbox-nav" class="absolute inset-x-4 top-1/2 -translate-y-1/2 hidden justify-between pointer-events-none px-4 md:px-12 z-52">
+            <button onclick="navigateLightbox(-1)" class="w-12 h-12 rounded-full border border-champagne/30 bg-atlantica/40 flex items-center justify-center text-champagne hover:bg-gold hover:text-atlantica transition-all duration-300 pointer-events-auto shadow-md">
+                <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+            </button>
+            <button onclick="navigateLightbox(1)" class="w-12 h-12 rounded-full border border-champagne/30 bg-atlantica/40 flex items-center justify-center text-champagne hover:bg-gold hover:text-atlantica transition-all duration-300 pointer-events-auto shadow-md">
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xl"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Modal Content Container -->
+        <div class="max-w-4xl max-h-[85vh] flex flex-col items-center relative z-51">
+            <img id="lightbox-img" src="" alt="Zoom Imagem" class="max-w-full max-h-[72vh] object-contain rounded-xl border border-gold/25 shadow-2xl">
+            <p id="lightbox-caption" class="text-champagne font-serif italic text-lg mt-4 text-center"></p>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId, btn) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+            
+            const activeTab = document.getElementById('tab-' + tabId);
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+            }
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(el => el.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // Lightbox gallery systems
+        let currentGalleryImages = [];
+        let currentGalleryIndex = 0;
+
+        function openLightbox(imgSrc, caption, galleryImagesArray = []) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const navBtns = document.getElementById('lightbox-nav');
+            
+            currentGalleryImages = galleryImagesArray;
+            if (galleryImagesArray.length > 0) {
+                currentGalleryIndex = galleryImagesArray.indexOf(imgSrc);
+                if (currentGalleryIndex === -1) currentGalleryIndex = 0;
+            } else {
+                currentGalleryImages = [imgSrc];
+                currentGalleryIndex = 0;
+            }
+            
+            lightboxImg.src = imgSrc;
+            lightboxCaption.textContent = caption;
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Lock scrolling
+            
+            if (currentGalleryImages.length > 1) {
+                navBtns.classList.remove('hidden');
+                navBtns.classList.add('flex');
+            } else {
+                navBtns.classList.add('hidden');
+                navBtns.classList.remove('flex');
+            }
+        }
+
+        function navigateLightbox(direction) {
+            if (currentGalleryImages.length <= 1) return;
+            
+            currentGalleryIndex += direction;
+            if (currentGalleryIndex < 0) {
+                currentGalleryIndex = currentGalleryImages.length - 1;
+            } else if (currentGalleryIndex >= currentGalleryImages.length) {
+                currentGalleryIndex = 0;
+            }
+            
+            const nextSrc = currentGalleryImages[currentGalleryIndex];
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = nextSrc;
+            
+            // Set friendly page captions dynamically
+            if (nextSrc.includes('MANUAL')) {
+                const pageNum = nextSrc.match(/_(\d+)\.png/);
+                if (pageNum) {
+                    document.getElementById('lightbox-caption').textContent = `Manual dos Padrinhos - Página ${parseInt(pageNum[1])}`;
+                } else {
+                    document.getElementById('lightbox-caption').textContent = `Manual dos Padrinhos`;
+                }
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = ''; // Unlock scrolling
+        }
+
+        // Handle Escape and Arrow keys in Lightbox
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('hidden')) return;
+            
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                navigateLightbox(1);
+            } else if (e.key === 'ArrowLeft') {
+                navigateLightbox(-1);
+            }
+        });
+
+        // Copy Pix to Clipboard
+        function copyPix() {
+            const keyText = document.getElementById('pix-key').textContent;
+            navigator.clipboard.writeText(keyText).then(() => {
+                alert('Chave Pix copiada com sucesso!');
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        // 6 dobra: Carousel slider mechanics for Mobile
+        let currentSlide = 1; // Default starts at medium/Clássico (index 1)
+        const track = document.getElementById('carousel-track');
+        
+        function updateCarousel() {
+            const percentage = -currentSlide * 85; // matches 85vw on mobile
+            if (track) {
+                track.style.transform = `translateX(${percentage}vw)`;
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlide < 2) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+        
+        // Initialize carousel positioning
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth < 768) {
+                updateCarousel();
+            }
+        });
+
+        // Mercado Pago payment links configuration for Option 1
+        // Seus links criados no painel do Mercado Pago devem ser inseridos aqui.
+        // Se deixados em branco, o site inteligentemente redireciona para o seu WhatsApp solicitando o link.
+        const mercadopagoLinks = {
+            "Identidade Essencial": "https://mpago.li/2dJHg5c", 
+            "Identidade Clássica": "https://mpago.li/287vDoU",
+            "Identidade Premium": "https://mpago.li/1SvJ6Bo"
+        };
+
+        // Package Selection triggers the custom Payment Modal
+        function selectPackage(packageName, price) {
+            // 1. Preencher nome e preços no modal
+            document.getElementById('modal-package-name').textContent = packageName;
+            document.getElementById('modal-card-price').textContent = `R$ ${price},00`;
+            
+            // Calcular desconto de 10% do Pix
+            const discountPrice = Math.round(price * 0.9);
+            document.getElementById('modal-pix-price').textContent = `R$ ${discountPrice},00`;
+            document.getElementById('modal-original-price').textContent = `de R$ ${price},00`;
+            
+            // 2. Configurar o link de aviso/comprovante do Pix por WhatsApp
+            const pixMessage = `Olá Pedro! Acabei de realizar o pagamento do PIX no valor de R$ ${discountPrice},00 (à vista com 10% OFF) para o pacote *${packageName}* e gostaria de enviar o comprovante para darmos início!`;
+            document.getElementById('btn-whatsapp-pix').href = `https://wa.me/5511977099721?text=${encodeURIComponent(pixMessage)}`;
+            
+            // 3. Configurar o link do Cartão de Crédito (Mercado Pago ou Fallback WhatsApp)
+            const cardLink = mercadopagoLinks[packageName];
+            const btnPayCard = document.getElementById('btn-pay-card-modal');
+            if (cardLink && cardLink.trim() !== "") {
+                btnPayCard.href = cardLink;
+            } else {
+                // Caso não tenha configurado o link do Mercado Pago ainda, redireciona para o WhatsApp solicitando o link
+                const fallbackMessage = `Olá Pedro! Escolhi o pacote *${packageName}* e gostaria de receber o link do Mercado Pago para efetuar o pagamento de R$ ${price},00 no cartão de crédito!`;
+                btnPayCard.href = `https://wa.me/5511977099721?text=${encodeURIComponent(fallbackMessage)}`;
+            }
+            
+            // 4. Abrir o Modal de Pagamento
+            openPaymentModal();
+        }
+
+        function openPaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            const modalBody = modal.querySelector('.bento-card');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Bloquear rolagem de fundo
+            
+            // Pequeno delay para acionar as transições do CSS do Tailwind
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modalBody.classList.remove('scale-95');
+                modalBody.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            const modalBody = modal.querySelector('.bento-card');
+            
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalBody.classList.remove('scale-100');
+            modalBody.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = ''; // Desbloquear rolagem de fundo
+            }, 300);
+        }
+
+        // Copiar Pix Inteligente dentro do Modal com feedback de sucesso
+        function copyPixModal() {
+            const btn = document.getElementById('btn-copy-pix-modal');
+            const keyText = "pkfaustonascimento@gmail.com";
+            
+            navigator.clipboard.writeText(keyText).then(() => {
+                // Feedback visual de sucesso premium
+                btn.innerHTML = `<iconify-icon icon="solar:check-circle-bold" class="text-base"></iconify-icon> Chave Copiada!`;
+                btn.classList.remove('bg-gold', 'text-atlantica');
+                btn.classList.add('bg-green-600', 'text-white');
+                
+                setTimeout(() => {
+                    btn.innerHTML = `<iconify-icon icon="solar:copy-bold-duotone" class="text-base"></iconify-icon> Copiar Chave PIX`;
+                    btn.classList.add('bg-gold', 'text-atlantica');
+                    btn.classList.remove('bg-green-600', 'text-white');
+                }, 2500);
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        // Fechar Modal ao clicar na área escura (backdrop)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('payment-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePaymentModal();
+                }
+            });
+        });
+
+        // Reveal animation on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Run immediately on load
+        });
+    </script>
+</body>
+</html>
