@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PKASA | Identidade Visual</title>
     <meta name="description" content="Estúdio de Identidade Visual e Papelaria Fina para Casamentos. Eternizamos histórias de amor em design atemporal.">
-    <!-- Tab Icon (Branding Favicon) -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="icon" type="image/png" href="ELEMENTOS%20SITE/ÍCONE.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -140,6 +140,11 @@
     </style>
 </head>
 <body class="selection:bg-gold/30 selection:text-atlantica relative">
+<script>
+if (location.protocol !== 'https:') {
+  location.href = 'https://' + location.host + location.pathname + location.search + location.hash;
+}
+</script>
     <div class="bg-grid-overlay"></div>
     <div class="absolute inset-0 bg-brand-pattern opacity-[0.03] pointer-events-none z-0"></div>
 
